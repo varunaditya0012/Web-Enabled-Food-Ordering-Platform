@@ -61,36 +61,48 @@
                         <div class="deal-card">
                             <div class="deal-badge">Buy 1 Get 1 Free</div>
                             <div class="deal-img">
-                                <img src="assets/images/double_feast.jpg" alt="Pizza">
+                                <img src="assets/images/double_feast.jpg" alt="Double Feast Pizza">
                             </div>
                             <div class="deal-info">
                                 <h3>Double Feast</h3>
                                 <p>Buy any medium pizza and get one free!</p>
-                                <button class="btn btn-primary btn-block">Order Now</button>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                    <span style="font-weight:800; font-size:1.2rem; color:var(--primary);">$18.99</span>
+                                    <span style="text-decoration:line-through; color:#999; font-size:0.9rem;">$35.99</span>
+                                </div>
+                                <button class="btn btn-primary btn-block" onclick="addToCart('Double Feast Deal', 18.99)">Order Now</button>
                             </div>
                         </div>
                         <!-- Deal 2 -->
                         <div class="deal-card">
                             <div class="deal-badge">Family Special</div>
                             <div class="deal-img">
-                                <img src="assets/images/family_special.jpg" alt="Combo">
+                                <img src="assets/images/family_special.jpg" alt="Family Special Combo">
                             </div>
                             <div class="deal-info">
                                 <h3>Family Box</h3>
                                 <p>2 Large Pizzas, Garlic Bread + Coke.</p>
-                                <button class="btn btn-primary btn-block">Order Now</button>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                    <span style="font-weight:800; font-size:1.2rem; color:var(--primary);">$24.99</span>
+                                    <span style="text-decoration:line-through; color:#999; font-size:0.9rem;">$44.99</span>
+                                </div>
+                                <button class="btn btn-primary btn-block" onclick="addToCart('Family Box Combo', 24.99)">Order Now</button>
                             </div>
                         </div>
                         <!-- Deal 3 -->
                         <div class="deal-card">
                             <div class="deal-badge">40% OFF</div>
                             <div class="deal-img">
-                                <img src="assets/images/lunch_saver.jpg" alt="Pepperoni">
+                                <img src="assets/images/lunch_saver.jpg" alt="Lunch Saver">
                             </div>
                             <div class="deal-info">
                                 <h3>Lunch Saver</h3>
                                 <p>Flat 40% off on all pizzas 12PM - 3PM.</p>
-                                <button class="btn btn-primary btn-block">Order Now</button>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                    <span style="font-weight:800; font-size:1.2rem; color:var(--primary);">$11.99</span>
+                                    <span style="text-decoration:line-through; color:#999; font-size:0.9rem;">$19.99</span>
+                                </div>
+                                <button class="btn btn-primary btn-block" onclick="addToCart('Lunch Saver Special', 11.99)">Order Now</button>
                             </div>
                         </div>
                     </div>
@@ -113,39 +125,75 @@
                     </div>
 
                     <div class="highlights-grid">
-                        <div class="highlight-card">
+                        <div class="highlight-card" data-category="pizzas">
                             <div class="h-img-placeholder">
                                 <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400"
-                                    alt="Item">
+                                    alt="Pepperoni Blast">
                             </div>
                             <h4>Pepperoni Blast</h4>
-                            <p class="price">INR 1200</p>
-                            <button class="btn btn-secondary btn-block">Add to Cart</button>
+                            <p class="price">$14.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('Pepperoni Blast', 14.99)">Add to Cart</button>
                         </div>
-                        <div class="highlight-card">
+                        <div class="highlight-card" data-category="pizzas">
                             <div class="h-img-placeholder">
                                 <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=400"
-                                    alt="Item">
+                                    alt="Veggie Supreme">
                             </div>
                             <h4>Veggie Supreme</h4>
-                            <p class="price">INR 1499</p>
-                            <button class="btn btn-secondary btn-block">Add to Cart</button>
+                            <p class="price">$12.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('Veggie Supreme', 12.99)">Add to Cart</button>
                         </div>
-                        <div class="highlight-card">
+                        <div class="highlight-card" data-category="pizzas">
                             <div class="h-img-placeholder">
-                                <img src="assets/images/cheese_burst.jpg" alt="Item">
+                                <img src="assets/images/cheese_burst.jpg" alt="Cheese Burst">
                             </div>
                             <h4>Cheese Burst</h4>
-                            <p class="price">INR 800</p>
-                            <button class="btn btn-secondary btn-block">Add to Cart</button>
+                            <p class="price">$9.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('Cheese Burst', 9.99)">Add to Cart</button>
                         </div>
-                        <div class="highlight-card">
+                        <div class="highlight-card" data-category="pizzas">
                             <div class="h-img-placeholder">
-                                <img src="assets/images/bbq_chicken.jpg" alt="Item">
+                                <img src="assets/images/bbq_chicken.jpg" alt="BBQ Chicken">
                             </div>
                             <h4>BBQ Chicken</h4>
-                            <p class="price">INR 1440</p>
-                            <button class="btn btn-secondary btn-block">Add to Cart</button>
+                            <p class="price">$15.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('BBQ Chicken', 15.99)">Add to Cart</button>
+                        </div>
+                        <div class="highlight-card" data-category="sides">
+                            <div class="h-img-placeholder">
+                                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?q=80&w=400"
+                                    alt="Garlic Breadsticks">
+                            </div>
+                            <h4>Garlic Breadsticks</h4>
+                            <p class="price">$4.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('Garlic Breadsticks', 4.99)">Add to Cart</button>
+                        </div>
+                        <div class="highlight-card" data-category="sides">
+                            <div class="h-img-placeholder">
+                                <img src="https://images.unsplash.com/photo-1639024471287-032f66ab7526?q=80&w=400"
+                                    alt="Golden Onion Rings">
+                            </div>
+                            <h4>Golden Onion Rings</h4>
+                            <p class="price">$3.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('Golden Onion Rings', 3.99)">Add to Cart</button>
+                        </div>
+                        <div class="highlight-card" data-category="desserts">
+                            <div class="h-img-placeholder">
+                                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=400"
+                                    alt="Choco Lava Cake">
+                            </div>
+                            <h4>Choco Lava Cake</h4>
+                            <p class="price">$5.99</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('Choco Lava Cake', 5.99)">Add to Cart</button>
+                        </div>
+                        <div class="highlight-card" data-category="desserts">
+                            <div class="h-img-placeholder">
+                                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400"
+                                    alt="New York Cheesecake">
+                            </div>
+                            <h4>NY Cheesecake</h4>
+                            <p class="price">$6.49</p>
+                            <button class="btn btn-secondary btn-block" onclick="addToCart('NY Cheesecake', 6.49)">Add to Cart</button>
                         </div>
                     </div>
 
@@ -343,8 +391,14 @@
     <div id="chat-btn" class="chat-fab">💬</div>
     <div id="chat-widget" class="chat-widget" style="display: none;">
         <div class="chat-header">
-            <span>Support Agent</span>
-            <button id="close-chat">×</button>
+            <div class="chat-header-info">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-header-text">
+                    <h3>QuickBot Support</h3>
+                    <div class="chat-status">Online • Ready to Help</div>
+                </div>
+            </div>
+            <button id="close-chat" aria-label="Close Chat">×</button>
         </div>
         <div id="chat-body" class="chat-body">
             <div class="chat-msg bot">Hi! I'm QuickBot. How can I help you?</div>

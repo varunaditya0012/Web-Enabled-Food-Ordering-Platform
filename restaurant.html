@@ -4,37 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger King - QuickBite</title>
+    <title>Restaurant Menu - QuickBite</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .menu-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-img-card {
+            width: 100px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+
+        .menu-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item-card:hover .menu-img-card img {
+            transform: scale(1.08);
+        }
+
+        .menu-search-container {
+            margin: 24px auto;
+            max-width: 520px;
+            position: relative;
+        }
+
+        .menu-search-input {
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 50px;
+            border: 2px solid #E5E7EB;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            font-family: inherit;
+        }
+
+        .menu-search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(227, 24, 55, 0.12);
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
+        <!-- App Header with Standardized Dynamic Navigation -->
         <header class="app-header">
-            <div class="logo"><a href="index.html">QuickBite</a></div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="#" id="cart-trigger">Cart <span id="cart-count">0</span></a>
-            </nav>
+            <div class="logo"><a href="index.html">Quick<span>Bite</span></a></div>
+            <div class="flex items-center">
+                <nav class="flex items-center">
+                    <a href="index.html">Home</a>
+                    <a href="restaurant.html" class="active">Menu</a>
+                    <a href="tracking.html">Track Order</a>
+                    <a href="login.html" class="btn btn-secondary"
+                        style="padding: 8px 16px; margin-left: 20px;">Login</a>
+                </nav>
+                <a href="#" id="cart-trigger" style="margin-left: 20px; position: relative;">
+                    <i data-lucide="shopping-cart"></i>
+                    <span id="cart-count"
+                        style="position: absolute; top: -8px; right: -8px; background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 10px;">0</span>
+                </a>
+            </div>
         </header>
 
         <main id="main-content">
-            <!-- Restaurant Header -->
+            <!-- Restaurant Banner -->
             <div class="restaurant-banner">
                 <div class="container">
                     <div class="banner-content">
-                        <h1>Burger King</h1>
-                        <p class="banner-meta">Burgers • American • $ • 20-30 min</p>
+                        <h1>QuickBite Kitchen & Grill</h1>
+                        <p class="banner-meta">Burgers • Pizzas • American • ⚡ 20-30 min delivery</p>
                         <div class="banner-rating">
-                            <i data-lucide="star" fill="currentColor"></i> 4.5
+                            <i data-lucide="star" fill="currentColor"></i> 4.8 (1,240+ reviews)
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu Navigation (Sticky) -->
+            <!-- Sticky Menu Navigation -->
             <div class="menu-nav-container">
                 <div class="container">
                     <nav class="menu-nav">
@@ -46,33 +109,49 @@
                 </div>
             </div>
 
-            <!-- Menu Sections -->
+            <!-- Interactive Real-time Search Bar -->
+            <div class="container">
+                <div class="menu-search-container">
+                    <input type="text" id="menu-search-input" class="menu-search-input"
+                        placeholder="🔍 Search items by name or description...">
+                </div>
+            </div>
+
+            <!-- Menu Sections Container -->
             <div class="container menu-container">
+                <!-- Section 1: Popular Items -->
                 <section id="popular" class="menu-section">
                     <h3>Popular Items</h3>
                     <div class="menu-grid">
-                        <div class="menu-item-card">
+                        <div class="menu-item-card" data-search="whopper meal flame-grilled patty burger fries">
                             <div class="menu-text">
                                 <h4>Whopper Meal</h4>
-                                <p>Flame-grilled patty, sesame bun, with fries and drink.</p>
+                                <p>Flame-grilled patty, sesame bun, served with crispy fries and chilled drink.</p>
                                 <span class="price">$9.99</span>
                             </div>
                             <div class="menu-action">
-                                <div class="menu-img-placeholder"></div>
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400"
+                                        alt="Whopper Meal">
+                                </div>
                                 <button class="btn btn-primary btn-sm add-btn"
                                     onclick="addToCart('Whopper Meal', 9.99)">
                                     <i data-lucide="plus"></i> Add
                                 </button>
                             </div>
                         </div>
-                        <div class="menu-item-card">
+
+                        <div class="menu-item-card" data-search="chicken royale crispy chicken breast lettuce mayo burger">
                             <div class="menu-text">
                                 <h4>Chicken Royale</h4>
-                                <p>Crispy chicken breast with lettuce and mayo.</p>
+                                <p>Crispy breaded chicken breast with fresh garden lettuce and creamy mayo.</p>
                                 <span class="price">$7.49</span>
                             </div>
                             <div class="menu-action">
-                                <div class="menu-img-placeholder"></div>
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?q=80&w=400"
+                                        alt="Chicken Royale">
+                                </div>
                                 <button class="btn btn-primary btn-sm add-btn"
                                     onclick="addToCart('Chicken Royale', 7.49)">
                                     <i data-lucide="plus"></i> Add
@@ -82,30 +161,39 @@
                     </div>
                 </section>
 
+                <!-- Section 2: Burgers -->
                 <section id="burgers" class="menu-section">
                     <h3>Burgers</h3>
                     <div class="menu-grid">
-                        <div class="menu-item-card">
+                        <div class="menu-item-card" data-search="bacon king two beef patties smoked bacon cheddar cheese">
                             <div class="menu-text">
                                 <h4>Bacon King</h4>
-                                <p>Two beef patties, topped with smoked bacon and cheese.</p>
+                                <p>Two juicy beef patties, stacked with smoked bacon strips and melted cheddar.</p>
                                 <span class="price">$10.49</span>
                             </div>
                             <div class="menu-action">
-                                <div class="menu-img-placeholder"></div>
-                                <button class="btn btn-primary btn-sm add-btn" onclick="addToCart('Bacon King', 10.49)">
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=400"
+                                        alt="Bacon King">
+                                </div>
+                                <button class="btn btn-primary btn-sm add-btn"
+                                    onclick="addToCart('Bacon King', 10.49)">
                                     <i data-lucide="plus"></i> Add
                                 </button>
                             </div>
                         </div>
-                        <div class="menu-item-card">
+
+                        <div class="menu-item-card" data-search="double cheeseburger two patties melted cheese burger">
                             <div class="menu-text">
                                 <h4>Double Cheeseburger</h4>
-                                <p>Two flame-grilled patties with melted cheese.</p>
+                                <p>Two flame-grilled beef patties with double melted cheese and pickles.</p>
                                 <span class="price">$5.99</span>
                             </div>
                             <div class="menu-action">
-                                <div class="menu-img-placeholder"></div>
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=400"
+                                        alt="Double Cheeseburger">
+                                </div>
                                 <button class="btn btn-primary btn-sm add-btn"
                                     onclick="addToCart('Double Cheeseburger', 5.99)">
                                     <i data-lucide="plus"></i> Add
@@ -115,32 +203,101 @@
                     </div>
                 </section>
 
+                <!-- Section 3: Sides -->
                 <section id="sides" class="menu-section">
                     <h3>Sides</h3>
                     <div class="menu-grid">
-                        <div class="menu-item-card">
+                        <div class="menu-item-card" data-search="medium fries classic french fries salted potato">
                             <div class="menu-text">
                                 <h4>Medium Fries</h4>
-                                <p>Classic salted fries.</p>
+                                <p>Golden, crispy salted potato fries made fresh to order.</p>
                                 <span class="price">$2.99</span>
                             </div>
                             <div class="menu-action">
-                                <div class="menu-img-placeholder"></div>
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=400"
+                                        alt="Medium Fries">
+                                </div>
                                 <button class="btn btn-primary btn-sm add-btn"
                                     onclick="addToCart('Medium Fries', 2.99)">
                                     <i data-lucide="plus"></i> Add
                                 </button>
                             </div>
                         </div>
-                        <div class="menu-item-card">
+
+                        <div class="menu-item-card" data-search="onion rings crispy battered snack side">
                             <div class="menu-text">
-                                <h4>Onion Rings (6pcs)</h4>
-                                <p>Golden crispy onion rings.</p>
+                                <h4>Golden Onion Rings (6pcs)</h4>
+                                <p>Crisp, battered sweet onions served with tangy signature dipping sauce.</p>
                                 <span class="price">$3.49</span>
                             </div>
                             <div class="menu-action">
-                                <div class="menu-img-placeholder"></div>
-                                <button class="btn btn-primary btn-sm add-btn" onclick="addToCart('Onion Rings', 3.49)">
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1639024471287-032f66ab7526?q=80&w=400"
+                                        alt="Onion Rings">
+                                </div>
+                                <button class="btn btn-primary btn-sm add-btn"
+                                    onclick="addToCart('Golden Onion Rings', 3.49)">
+                                    <i data-lucide="plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Drinks (Newly Added & Fully Integrated) -->
+                <section id="drinks" class="menu-section">
+                    <h3>Drinks & Refreshers</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item-card" data-search="coca cola chilled soda soft drink beverage">
+                            <div class="menu-text">
+                                <h4>Chilled Coca-Cola (500ml)</h4>
+                                <p>Classic refreshing soda served ice-cold.</p>
+                                <span class="price">$2.49</span>
+                            </div>
+                            <div class="menu-action">
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400"
+                                        alt="Coca-Cola">
+                                </div>
+                                <button class="btn btn-primary btn-sm add-btn"
+                                    onclick="addToCart('Chilled Coca-Cola', 2.49)">
+                                    <i data-lucide="plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item-card" data-search="iced fresh lemonade citrus cold drink beverage">
+                            <div class="menu-text">
+                                <h4>Iced Mint Lemonade</h4>
+                                <p>Freshly squeezed lemon juice with garden mint and crushed ice.</p>
+                                <span class="price">$3.29</span>
+                            </div>
+                            <div class="menu-action">
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=400"
+                                        alt="Iced Mint Lemonade">
+                                </div>
+                                <button class="btn btn-primary btn-sm add-btn"
+                                    onclick="addToCart('Iced Mint Lemonade', 3.29)">
+                                    <i data-lucide="plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item-card" data-search="chocolate milkshake thick shake dessert beverage">
+                            <div class="menu-text">
+                                <h4>Creamy Chocolate Shake</h4>
+                                <p>Thick blended Belgian chocolate ice cream topped with whipped cream.</p>
+                                <span class="price">$4.49</span>
+                            </div>
+                            <div class="menu-action">
+                                <div class="menu-img-card">
+                                    <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=400"
+                                        alt="Chocolate Shake">
+                                </div>
+                                <button class="btn btn-primary btn-sm add-btn"
+                                    onclick="addToCart('Creamy Chocolate Shake', 4.49)">
                                     <i data-lucide="plus"></i> Add
                                 </button>
                             </div>
@@ -150,12 +307,12 @@
             </div>
         </main>
 
-        <!-- Cart Drawer (Same as index) -->
+        <!-- Cart Drawer Component -->
         <div class="cart-overlay" id="cart-overlay"></div>
         <div class="cart-drawer" id="cart-drawer">
             <div class="cart-header">
                 <h2>Your Order</h2>
-                <button id="close-cart" class="icon-btn"><i data-lucide="x"></i></button>
+                <button id="close-cart" class="icon-btn" aria-label="Close Cart"><i data-lucide="x"></i></button>
             </div>
             <div class="cart-items" id="cart-items">
                 <div class="empty-cart">Your cart is empty</div>
@@ -170,11 +327,47 @@
         </div>
     </div>
 
+    <!-- Floating Chatbot Widget -->
+    <div id="chat-btn" class="chat-fab">💬</div>
+    <div id="chat-widget" class="chat-widget" style="display: none;">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-header-text">
+                    <h3>QuickBot Support</h3>
+                    <div class="chat-status">Online • Ready to Help</div>
+                </div>
+            </div>
+            <button id="close-chat" aria-label="Close Chat">&times;</button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="chat-msg bot">Hi! I'm QuickBot. Ask me about recommendations, active orders, or deals!</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="chat-send" aria-label="Send Message">➤</button>
+        </div>
+    </div>
+
+    <!-- Application JavaScript Architecture -->
     <script src="js/auth.js"></script>
     <script src="js/api.js"></script>
     <script src="js/app.js"></script>
     <script>
-        lucide.createIcons();
+        // Live search filter on menu page
+        document.getElementById('menu-search-input')?.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.menu-item-card');
+
+            cards.forEach(card => {
+                const searchKeywords = (card.getAttribute('data-search') || '') + ' ' + (card.querySelector('h4')?.textContent || '');
+                if (searchKeywords.toLowerCase().includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 

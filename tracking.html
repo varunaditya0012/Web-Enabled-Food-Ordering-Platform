@@ -4,62 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Tracking - QuickBite</title>
+    <title>Live Order Tracking - QuickBite</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .tracking-map-custom {
+            height: 160px;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .tracking-map-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(#334155 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+            opacity: 0.4;
+        }
+
+        .courier-pulse {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .courier-dot {
+            width: 12px;
+            height: 12px;
+            background: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25);
+            animation: pulseGlow 1.5s infinite;
+        }
+
+        .eta-badge {
+            font-size: 0.9rem;
+            color: #E2E8F0;
+        }
+
+        .eta-badge strong {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
+        <!-- Header -->
         <header class="app-header">
-            <div class="logo"><a href="index.html">QuickBite</a></div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="#" id="cart-trigger">Cart <span id="cart-count">0</span></a>
-            </nav>
+            <div class="logo"><a href="index.html">Quick<span>Bite</span></a></div>
+            <div class="flex items-center">
+                <nav class="flex items-center">
+                    <a href="index.html">Home</a>
+                    <a href="restaurant.html">Menu</a>
+                    <a href="tracking.html" class="active">Track Order</a>
+                    <a href="login.html" class="btn btn-secondary"
+                        style="padding: 8px 16px; margin-left: 20px;">Login</a>
+                </nav>
+                <a href="#" id="cart-trigger" style="margin-left: 20px; position: relative;">
+                    <i data-lucide="shopping-cart"></i>
+                    <span id="cart-count"
+                        style="position: absolute; top: -8px; right: -8px; background: var(--primary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 10px;">0</span>
+                </a>
+            </div>
         </header>
 
         <main id="main-content">
-            <div class="container tracking-container">
+            <div class="container tracking-container" style="max-width: 800px; margin: 40px auto;">
                 <div class="tracking-card">
                     <div class="tracking-header">
-                        <h2>Order #2891</h2>
-                        <span class="status-badge">Preparing</span>
+                        <h2>Order Tracking</h2>
+                        <span class="status-badge status-step-pill preparing">Preparing</span>
                     </div>
-                    <div class="tracking-map">
-                        <div class="map-placeholder">
-                            <i data-lucide="map" class="map-icon"></i>
-                            <p>Map View</p>
+
+                    <!-- Simulated GPS / Courier Radar -->
+                    <div class="tracking-map-custom">
+                        <div class="courier-pulse">
+                            <div class="courier-dot"></div>
+                            <div class="eta-badge">
+                                Estimated Delivery: <strong>~22 Minutes</strong>
+                            </div>
+                        </div>
+                        <div style="z-index:2; margin-top:10px; font-size:0.8rem; color:#94A3B8;">
+                            📍 Courier is assigned & headed to kitchen
                         </div>
                     </div>
+
+                    <!-- 4-Step Animated Timeline -->
                     <div class="tracking-timeline">
                         <div class="timeline-item completed">
                             <div class="timeline-icon"><i data-lucide="check"></i></div>
                             <div class="timeline-content">
                                 <h4>Order Placed</h4>
-                                <p>5:30 PM</p>
+                                <p>Order confirmed & sent to kitchen</p>
                             </div>
                         </div>
                         <div class="timeline-item active">
                             <div class="timeline-icon"><i data-lucide="chef-hat"></i></div>
                             <div class="timeline-content">
                                 <h4>Preparing</h4>
-                                <p>Resturant is preparing your food</p>
+                                <p>Master chef is baking your food fresh</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-icon"><i data-lucide="bike"></i></div>
                             <div class="timeline-content">
                                 <h4>Out for Delivery</h4>
-                                <p>Estimated 6:15 PM</p>
+                                <p>Rider is speeding to your address</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-icon"><i data-lucide="home"></i></div>
                             <div class="timeline-content">
                                 <h4>Delivered</h4>
-                                <p>Enjoy your meal!</p>
+                                <p>Hot food delivered to your door!</p>
                             </div>
                         </div>
                     </div>
@@ -72,7 +154,7 @@
         <div class="cart-drawer" id="cart-drawer">
             <div class="cart-header">
                 <h2>Your Order</h2>
-                <button id="close-cart" class="icon-btn"><i data-lucide="x"></i></button>
+                <button id="close-cart" class="icon-btn" aria-label="Close Cart"><i data-lucide="x"></i></button>
             </div>
             <div class="cart-items" id="cart-items">
                 <div class="empty-cart">Your cart is empty</div>
@@ -84,6 +166,28 @@
                 </div>
                 <button class="btn btn-primary btn-block">Checkout</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot Widget -->
+    <div id="chat-btn" class="chat-fab">💬</div>
+    <div id="chat-widget" class="chat-widget" style="display: none;">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-header-text">
+                    <h3>QuickBot Support</h3>
+                    <div class="chat-status">Online • Ready to Help</div>
+                </div>
+            </div>
+            <button id="close-chat" aria-label="Close Chat">&times;</button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="chat-msg bot">Hi! I'm QuickBot. Ask me about your order status or anything else!</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="chat-send" aria-label="Send Message">➤</button>
         </div>
     </div>
 
